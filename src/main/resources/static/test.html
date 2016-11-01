@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aviation Graph Screen</title>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<link rel="stylesheet" href="css/index.css">
+<!-- <script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css">  -->
+<!-- <script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/menu.js"></script>
+	<!-- src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+<!-- Include Required Prerequisites -->
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+ <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" /> -->
+ 
+<!-- Include Date Range Picker -->
+<!-- <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" /> -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script src="http://visjs.org/dist/vis.js"></script>
+  <link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" /> 
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="Utility.js"></script>
+
+<style>
+
+        
+        .black_overlay {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+.white_content {
+font-size:25px;
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  height: 20%;
+  padding: 16px;
+  border: 1px solid black;
+  background-color: white;
+  z-index: 1002;
+  overflow: auto;
+}
+        
+        
+        
+        
+        
+
+		.bgclass{
+			background-color: white !important;
+		}
+
+		
+	}
+.navbar {
+	margin-bottom: 0;
+	background-color: #01579B;
+	border: 0;
+	font-size: 11px !important;
+	letter-spacing: 4px;
+	font-weight: 600;
+
+	 position: static;
+}
+.btndiv {
+display: inline;
+float: left;
+padding-left: 0.5%;
+padding-top: 0.5%;
+}
+
+</style>
+ <style>
+        body, html {
+            font-family: arial, sans-serif;
+            font-size: 11pt;
+        }
+
+        
+		.button {
+    
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+.triangle{
+	width:0px; 
+	height:0px; 
+	border-left:20px solid transparent;
+	border-right:20px solid transparent;
+	border-top:20px solid #23CF46;
+}
+
+.ycircle{
+		background-color:Yellow;
+		border-radius: 50px;
+		padding: 12px 12px;
+}
+.bcircle{
+		background-color:Brown;
+		border-radius: 50px;
+		padding: 12px 12px;
+}
+  .vis-item.negative {
+    border-color: orange;
+    background-color: yellow;
+  }
+  .vis-item {
+    
+    background-color: Blue;
+  }
+
+    </style>
+
+    <!-- <script src="../../Code/vis/dist/vis.js"></script> -->
+    <!-- <link href="../../Code/vis/dist/vis.css" rel="stylesheet" type="text/css" /> -->
+    <!-- <script src="../vis/examples/googleAnalytics.js"></script> -->
+</head>
+<body>
+
+	<!-- Top Logo Header -->
+	<nav id="home"  class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">Aviation</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="afterLogin.html">HOME</a></li>
+				                        
+<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu <span class="caret"></span>                                                               </a>
+<ul class="dropdown-menu">
+
+<li><a href="Unit_Filter.html">Filter Editor</a></li>
+<li><a href="Splash_Screen.html">Component Analysis</a></li>
+</ul></li>
+				<li><a href="#foot">ABOUT ME</a></li>
+				<li><a href="#contact">CONTACT US</a></li>
+				<li><a href="index.html" id="logout">LOGOUT</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+	<!-- End of Top Logo Header -->
+
+<form action="">
+<br/><br/><br/>
+<div class="main_content bgclass">
+<div style='text-align:center'>
+		<!-- div for button alignment -->
+		<div class="btndiv">
+		<!-- <button class="filebtn list-cust-btn">File</button> -->
+		<!-- <button class="statbtn list-cust-btn">Statistics</button> -->
+		<input type="button" onclick="printDiv('visualization')" value="File" class="filebtn list-clear-btn">
+		<input type="button" value="Statistics" class="statbtn list-clear-btn">
+		</div>
+		
+		<label class="right_label">Component Removal History</label></div></div>
+	<div class="main_left">
+		
+		<div class="left_p1">
+					<!-- <div class="checkbox filter-checkbox form-group filter_left2_p2"> 
+				 <label id="tab-caption" style="border-bottom: 1px solid;width: 100%;border-bottom-color: black;">Sort</label> 
+				<input type="string" style="width: 70px;" id="sort" value="Sort">
+			<table class="tab_change">
+				
+				<tr>
+					<td><label><input type="checkbox"
+							name="Yearly">Yearly</label></td>
+				</tr>
+
+				<tr>
+				<td><label><input type="checkbox" name="Monthly">Monthly</label></td>
+				</tr>
+				<tr>
+				<td><label><input type="checkbox" name="Weekly">Weekly</label></td>
+			   </tr>
+				</table>
+			</div> -->
+		<hr id="date_line">	
+		<div class="form-group date-range ">
+			<!-- <center><label for="dateRange" class="label_date" style="color: brown;">Extract Date</label></center> -->
+			<div class="date_range_select ">
+			<label for="fromDate" class="label_date" >Extract Date</label> 
+			<input type="date"	class="form-control" style="margin-bottom: 4px;" id="fromDate" readonly="true" />
+			<label for="fromDate" class="label_date" >Date Range</label> 
+			 <input type="text" name="datefilter" value="" readonly="true" placeholder="dd/mm/yyyy - dd/mm/yyyy"/>
+					<!-- <script type="text/javascript"> -->
+						<!-- $(function() { -->
+
+						  <!-- $('input[name="datefilter"]').daterangepicker({ -->
+							  <!-- autoUpdateInput: false, -->
+							  <!-- locale: { -->
+								  <!-- cancelLabel: 'Clear' -->
+							  <!-- } -->
+						  <!-- }); -->
+
+						  <!-- $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) { -->
+							  <!-- $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY')); -->
+						  <!-- }); -->
+
+						  <!-- $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) { -->
+							  <!-- $(this).val(''); -->
+						  <!-- }); -->
+
+						<!-- }); -->
+
+			</div>
+			
+		</div>
+		
+		<!-- Installastion period bar Start -->
+		
+			<hr id="installationPeriodLine">
+			<div>
+				<div class="checkbox filter-checkbox form-group filter_left2_p2">
+					<table>
+						<tr>
+							<td style="padding-left: 8px;padding-top: 3px;"><input type="radio" name="instperbar" checked="true" /></td>
+					
+							<td><label id="tab-caption" style="border-bottom: 1px solid;width: 100%;border-bottom-color: black; padding-left: 4px !important;padding-bottom: 0px !important;">Installation Period Bar</label></td>
+						</tr>
+ 					</table>
+ 				</div>
+				<table style="margin-left:10px;">
+					<tr>
+						<td><label>Installed</label></td>
+						<td><div class="button" style="background-color:Blue;"/></td>
+					</tr>
+					<tr>
+						<td><label>Removed</label></td>
+					
+						<td><div class="button" style="background-color:white;"></td>
+					</tr>
+					<tr>
+						<td><label>Still Installed Box</label></td>
+					
+						<td><div class="button" style="background-color:Pink;"></td>
+					</tr>
+				</table>
+			</div>
+		
+		<!-- Installastion period bar END -->
+		
+		
+		<!-- Removal period bar Start -->
+		
+		<hr id="removalPeriodLine">			
+		<div>
+			
+			<div class="checkbox filter-checkbox form-group filter_left2_p2"> 
+<!-- <label id="tab-caption" style="border-bottom: 1px solid;width: 100%;border-bottom-color: black;">Removal Period Bar</label>  -->
+				<table>
+					<tr>
+						<td style="padding-left: 8px;padding-top: 3px;"><input type="radio" name="remperbar" /></td>
+					
+						<td><label id="tab-caption" style="border-bottom: 1px solid;width: 100%;border-bottom-color: black; padding-left: 4px !important;padding-bottom: 0px !important;">Removal Period Bar</label></td>
+					</tr>
+				 </table>
+			</div>
+			<table style="margin-left:10px;">
+				<tr>
+					<td><label>Scheduled</label></td>
+					<td><div class="triangle" ></div></td>
+				</tr>
+				<tr>
+					<td><label>Unscheduled</label></td>
+					
+					<td style="padding-left:6px"><div class="ycircle button" ></div></td>
+				</tr>
+				<tr>
+					<td><label>Others</label></td>
+					
+					<td style="padding-left:6px"><div class="bcircle button" ></div></td>
+				</tr>
+				</table>
+
+
+		</div>
+			
+		
+		<!-- Removal period bar END -->
+		
+		<!-- Analysis By Start -->
+		<hr id="analysisByLine">					
+		<div>
+			<div class="checkbox filter-checkbox form-group filter_left2_p2"> 
+				<label id="tab-caption" style="border-bottom: 1px solid;width: 95%;border-bottom-color: black;">Analysis By</label> 
+			</div>
+			<table style="margin-left:10px;">
+				<tr>
+					<td><input type="radio" name="filter"></td>
+					<td><label>Best First</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="filter"></td>
+					<td><label>Worst First</label></td>
+				</tr>
+ 			</table>
+		</div>
+	
+		
+		
+		<!-- Analysis By END -->
+		
+		
+		
+		<div>
+		<hr id="unitByLine">
+		<!-- <input type="string" style="width: 70px;" id="unit" value="Units by"> -->
+		<label id="tab-caption" style="border-bottom: 1px solid;width: 95%;border-bottom-color: black;">Units by</label> 
+		<div class="checkbox filter-checkbox form-group filter_left2_p2">
+			<table class="tab_change">
+				
+				<tr>
+					<td><label><input type="checkbox"
+							name="fleet">Fleet</label></td>
+				</tr>
+
+				<tr>
+				<td><label><input type="checkbox" name="subFleetCheckBox">Sub Fleet</label></td>
+				</tr>
+				<tr>
+				<td><label><input type="checkbox" name="aircraftNumbersCheckBox">Aircraft Numbers</label></td>
+			   </tr>
+			   <tr>
+				<td><label><input type="checkbox" name="cpnCheckBox">CPN</label></td>
+			   </tr>
+			   <tr>
+				<td><label><input type="checkbox" name="mpnCheckBox">MPN</label></td>
+			   </tr>
+			   <tr>
+				<td><label><input type="checkbox" name="ataCodesCheckBox">ATA Codes</label></td>
+			   </tr>
+			   <tr>
+				<td><label><input type="checkbox" name="cpnSerialNumberCheckBox">Component Serial Numbers</label></td>
+			   </tr>
+				</table>
+			</div>
+		</div>
+		<div style="padding-bottom: 10px;"><input style="padding-bottom: 0;margin-left: 30px;word-wrap: break-word;width: 160px;height: 50px;" name="action" type="button" value="Component Analysis" onclick="splashScreen()"/></div>
+		<div style="padding-bottom: 10px;"><input style="padding-bottom: 0;margin-left: 30px;word-wrap: break-word;width: 160px;height: 50px;" name="action" type="button" value="Filter Editor" onclick="component();"/></div>									
+		
+		</div>
+	
+	</div>
+</form>
+
+
+<br/><!-- <br/><br/><br/><br/><br/><br/><br/><br/> -->
+
+		<div id="visualization">
+		</div>
+	
+	
+	<div class="col-sm-12" style="margin-top: 12px;">
+	
+	<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-2" style="padding-bottom: 10px;"><input type="button" class="btn btn-primary"  style="width: 36%;"  value="<< Previous" id="previous" onclick="pagination('-1')"></div>
+<div class="col-sm-5"></div>
+<div class="col-sm-2" style="padding-bottom: 10px;"><input type="button" class="btn btn-primary" style="width: 26%;" value="Next >>" id="next" onclick="pagination('1')"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+function component(){
+	//alert("hi");
+	window.location="Unit_Filter.html";
+	
+}
+function splashScreen(){
+window.location="Splash_Screen.html";
+}
+// Instantiate our timeline object.
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+var report={};
+
+var removal=function(step){
+	//alert("report call")
+	$.ajax({
+		url : "/removalReport/"+step,
+		async: false,
+        cache: false,
+		success : function(data) { 
+			report=data;
+					
+		}
+	
+		
+	});
+	
+}
+
+
+
+$(document).ready(function() {
+	//alert("in report")
+	/*
+	
+				$('input[name="instperbar"],input[name="remperbar"]').unbind().click(function(){
+					if($(this).attr('checked')){
+					//console.log('block1');
+					$(this).attr('checked',false);
+					}
+					else{
+					$(this).attr('checked','checked');
+					//console.log('block2');
+					}
+					
+			});
+
+			$('input[name="instperbar"]').click(function(){
+					filterlogic();
+					
+			console.log('filter applied');
+			})
+
+			$('input[name="remperbar"]').click(function(){
+					
+					filterlogic();
+			console.log('filter applied');
+			})*/
+	/*<!-- ***************Start of Filter logic for chart selection***************	 -->
+	function filterlogic(){
+
+		if($('input[name="instperbar"]').attr('checked') == 'checked' && ($('input[name="remperbar"]').attr('checked') == false || $('input[name="remperbar"]').attr('checked') == undefined)){
+				$('.vis-item.vis-background.grph_bcircle,.vis-item.vis-background.grph_ycircle,.vis-item.vis-background.negative').css('display','none');
+				$('.vis-item-overflow,.vis-range,.vis-item.vis-background.positive').css('display','block');
+				console.log('show bars');
+			}
+		else if(($('input[name="instperbar"]').attr('checked')== false || $('input[name="instperbar"]').attr('checked') == undefined) && $('input[name="remperbar"]').attr('checked')== 'checked'){
+				$('.vis-item-overflow,.vis-range,.vis-item.vis-background.positive').css('display','none');
+				$('.vis-item.vis-background.grph_bcircle,.vis-item.vis-background.grph_ycircle,.vis-item.vis-background.negative').css('display','block');
+				console.log('show triangle');
+			}
+		else if($('input[name="instperbar"]').attr('checked')== 'checked' && $('input[name="remperbar"]').attr('checked')=='checked'){
+				$('.vis-item-overflow,.vis-range,.vis-item.vis-background.grph_bcircle,.vis-item.vis-background.grph_ycircle,.vis-item.vis-background.negative').css('display','block');
+				console.log('show all');
+		}
+		
+		else if(($('input[name="instperbar"]').attr('checked')== false || $('input[name="instperbar"]').attr('checked') == undefined) && ($('input[name="remperbar"]').attr('checked') == false || $('input[name="remperbar"]').attr('checked') == undefined)){
+				$('.vis-item-overflow,.vis-range,.vis-item.vis-background.grph_bcircle,.vis-item.vis-background.negative,.vis-item.vis-background.positive,.vis-item.vis-background.grph_ycircle').css('display','none');
+				console.log('show none');
+		}
+	}
+	<!-- ***************End of Filter logic for chart selection***************	 -->*/
+	
+<!-- $('.triangle').click(function(){ -->
+	<!-- if( $('.vis-item-overflow,.vis-range').css('display') == 'none' ) -->
+	<!-- $('.vis-item-overflow,.vis-range,grph_ycircle,.vis-item.vis-background.grph_bcircle').css('display','block'); -->
+	<!-- else -->
+	<!-- $('.vis-item-overflow,.vis-range,grph_ycircle,.vis-item.vis-background.grph_bcircle').css('display','none'); -->
+<!-- }); -->
+
+
+var step=0;
+	
+
+
+removal(step);
+ 
+  // Create a DataSet (allows two way data-binding)
+   var items = new vis.DataSet({
+        type: { start: 'Moment', end: 'Moment' }
+    }); 
+   var groups = new vis.DataSet();
+   
+  /* groups.add([ {id: 'serial4', content:'CPN4'}]);
+  items.add([{id: 4, content: '', start: '2015-01-01', end: '2015-03-27',group:'serial4'},
+     		{id: 5, content: '', start: '2015-06-20', end: '2016-11-27',group:'serial4',},
+    		{id: 6, content: '', start: '2017-02-20', end: '2017-06-27',group:'serial4'},
+     		{id: 7, content: '', start: '2018-09-20', end: '2019-09-20', className: 'negative',group:'serial4'}
+     		]); */
+   
+  
+  //{id: 7, content: '', start: '2018-09-20', end: '2019-09-20',type: 'background', className: 'negative',group:'serial4', subgroup:'sg_2'}
+  
+     		
+   groups.add(report.groupList);
+   items.add(report.itemList);
+   
+   
+  
+   console.log("report.groupList" + JSON.stringify(report.groupList));
+   console.log("report.itemList" + JSON.stringify(report.itemList));
+
+    var container = document.getElementById('visualization');
+    var options = {
+        // orientation:'top'
+       //start: '2014-01-10',
+       // end: '2019-02-10',
+       zoomable: false,
+    	   clickToUse: true,
+        editable: false,
+        stack: false
+    };
+
+    var timeline = new vis.Timeline(container, items, groups, options);
+    
+    function onClick (event) {
+    	  var properties = timeline.getEventProperties(event);
+    	  if(properties.item){
+    		  for (i = 0; i < report.itemList.length; i++) { 
+			    if(properties.item == report.itemList[i].id){
+			    	if(report.itemList[i].className == 'negative'){
+			    		document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';
+			    	}
+			    }
+			  }
+    		  
+    	  }
+    	  
+    	}
+    	container.addEventListener('click', onClick) ;
+
+    	
+
+      	paginationStatus();
+  
+	
+	<!-- //////////Timeline range////////// -->
+	
+	
+	 /*
+
+filterlogic();
+*/
+
+
+});
+
+
+function pagination(value) {
+    
+    //alert("in script"+value);
+    document.getElementById('visualization').innerHTML = "";
+    removal(value);
+    
+    // Create a DataSet (allows two way data-binding)
+     var items = new vis.DataSet({
+          type: { start: 'Moment', end: 'Moment' }
+      }); 
+     var groups = new vis.DataSet();
+     
+   
+     groups.add(report.groupList);
+     items.add(report.itemList);
+     
+     
+    
+     console.log("report.groupList" + JSON.stringify(report.groupList));
+     console.log("report.itemList" + JSON.stringify(report.itemList));
+
+      var container = document.getElementById('visualization');
+      var options = {
+    
+         zoomable: false,
+      	   clickToUse: true,
+          editable: false,
+          stack: false
+      };
+
+      var timeline = new vis.Timeline(container, items, groups, options);
+      
+      function onClick (event) {
+      	  var properties = timeline.getEventProperties(event);
+      	  if(properties.item){
+      		  for (i = 0; i < report.itemList.length; i++) { 
+  			    if(properties.item == report.itemList[i].id){
+  			    	if(report.itemList[i].className == 'negative'){
+  			    		document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';
+  			    	}
+  			    }
+  			  }
+      		  
+      	  }
+      	  
+      	}
+      	container.addEventListener('click', onClick) ;
+
+      	
+      	paginationStatus();
+  	
+
+
+  
+}
+
+var paginationStatus=function(){
+	//alert("paginationStatus call")
+	$.ajax({
+		url : "/paginationStatus",
+		async: false,
+        cache: false,
+		success : function(data) { 
+			status=data;
+					//alert("status "+status[0]+" status "+status[1]+status)
+					var statusValue=[];
+					var nextStatus;
+					var previousStatus;
+					statusValue =status.split(',');
+					loadvalue.push(statusValue);
+					nextStatus=statusValue[0];
+					previousStatus=statusValue[1];
+					//alert("nextStatus"+nextStatus);
+					if(nextStatus == 'true'){
+						//alert("in next true");
+						document.getElementById("next").disabled=true;
+					}else if(nextStatus == 'false'){
+						//alert("in next false");
+						document.getElementById("next").disabled=false;
+					}
+					
+					if(previousStatus == 'true'){
+						//alert("in previous true");
+						document.getElementById("previous").disabled=true;
+					}else if(previousStatus == 'false'){
+						//alert("in previous false");
+						document.getElementById("previous").disabled=false;
+					}
+						
+										
+		}
+	
+		
+	});
+	
+}
+
+</script>
+
+
+  <div id="light" class="white_content">Removal Data:          <a style="text-align: right;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+<br/>Date: 2014-11-21
+<br/>Removal Reason: 02
+  
+  </div>
+  <div id="fade" class="black_overlay"></div>
+</body>
+</html>
